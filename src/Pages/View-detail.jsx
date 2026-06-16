@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function View() {
   const { id } = useParams();
@@ -41,7 +42,7 @@ function View() {
   };
 
   return (
-    <div className="container py-5 mt-5">
+    <div className="container py-5 " style={{ marginTop: "100px" }}>
       <div className="card shadow-lg border-0 p-4">
         <div className="row g-4 align-items-center">
           <div className="col-md-5 text-center">
@@ -122,11 +123,13 @@ function View() {
             </div>
 
             <div className="mt-4 d-flex gap-3">
-              <button className="btn btn-primary px-4" onClick={addtocart}>
+              <button className="btn  px-4" style={{backgroundColor: "#f2a31c" }} onClick={addtocart}>
                 Add To Cart
               </button>
 
-              <button className="btn btn-dark px-4">Buy Now</button>
+              <Link to="/payment" className="btn btn-success">
+                Buy Now
+              </Link>
             </div>
           </div>
         </div>

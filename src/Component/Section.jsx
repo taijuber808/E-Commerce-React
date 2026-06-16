@@ -6,7 +6,7 @@ function Section({ search, category }) {
   const [current, setcurrent] = useState(1);
   const [sortOrder, setSortOrder] = useState("");
 
-  const userpages = 8;
+  const userpages = 16;
 
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=194")
@@ -36,6 +36,16 @@ function Section({ search, category }) {
   const firstpage = lastpage - userpages;
   const currentuser = sorteddata.slice(firstpage, lastpage);
   const totalpage = Math.ceil(filterData.length / userpages);
+
+  const addWishlist = (item) => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    wishlist.push(item);
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+    alert("Added to Wishlist ❤️");
+  };
 
   return (
     <>
@@ -85,8 +95,24 @@ function Section({ search, category }) {
                   justifyContent: "center",
                   alignItems: "center",
                   padding: "15px",
+                  position: "relative",
                 }}
               >
+                <button
+                  onClick={() => addWishlist(item)}
+                  className="btn btn-light "
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    width: "40px",
+                    height: "40px",
+                    zIndex: 10,
+                  }}
+                >
+                  <i className="bi bi-heart-fill text-danger"></i>
+                </button>
+
                 <img
                   src={item.thumbnail}
                   alt={item.title}
@@ -98,7 +124,6 @@ function Section({ search, category }) {
                 />
               </div>
 
-              
               <div className="card-body d-flex flex-column">
                 <h5
                   className="fw-bold"
@@ -116,7 +141,7 @@ function Section({ search, category }) {
                     minHeight: "60px",
                   }}
                 >
-                  {item.description}
+                  {item.description.slice(0, 70)}...
                 </p>
 
                 <div className="d-flex justify-content-between align-items-center mt-2">
@@ -159,4 +184,3 @@ function Section({ search, category }) {
 }
 
 export default Section;
-

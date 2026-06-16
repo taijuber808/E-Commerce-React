@@ -56,23 +56,34 @@ function NavScrollExample({ search, setSearch, category, setcategory }) {
                 Laptops
               </NavDropdown.Item>
 
-              <NavDropdown.Item onClick={() => setcategory("Mens Shirts")}>
-                Mens Shirts
+              <NavDropdown.Item onClick={() => setcategory("mens-shirts")}>
+                Men's Shirts
               </NavDropdown.Item>
 
-              <NavDropdown.Item onClick={() => setcategory("Mens Shoes")}>
-                Mens Shoes
+              <NavDropdown.Item onClick={() => setcategory("mens-shoes")}>
+                Men's Shoes
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setcategory("mens-watches")}>
+                Men's Watches
               </NavDropdown.Item>
 
-              <NavDropdown.Item onClick={() => setcategory("Womens Dresses")}>
-                Womens Dresses
+              <NavDropdown.Item onClick={() => setcategory("womens-bags")}>
+                Women's Bag
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setcategory("womens-dresses")}>
+                Women's Dresses
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => setcategory("womens-jewellery")}>
+                Women's Jewellery
               </NavDropdown.Item>
 
-              <NavDropdown.Item onClick={() => setcategory("Womens Shoes")}>
-                Womens Shoes
+              <NavDropdown.Item onClick={() => setcategory("womens-shoes")}>
+                Women's Shoes
               </NavDropdown.Item>
-
-                </NavDropdown>
+              <NavDropdown.Item onClick={() => setcategory("womens-watches")}>
+                Women's Watches
+              </NavDropdown.Item>
+            </NavDropdown>
 
             <Form className="Search">
               <Form.Control
@@ -96,10 +107,9 @@ function NavScrollExample({ search, setSearch, category, setcategory }) {
         ❤️ Wishlist
       </Nav.Link>
 
-      <Nav.Link className="cart" href="#">
+      <Nav.Link className="cart" as={Link} to="/login">
         👤Login
       </Nav.Link>
-
     </Navbar>
   );
 }

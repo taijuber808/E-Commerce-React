@@ -57,4 +57,41 @@ font-weight: 500;
 .editBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  
+}
+
+
+.social-icons i {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Instagram */
+.social-icons .bi-instagram:hover {
+  color: #e1306c;
+  transform: translateY(-5px);
+}
+
+/* Facebook */
+.social-icons .bi-facebook:hover {
+  color: #1877f2;
+  transform: translateY(-5px);
+}
+
+/* Twitter/X */
+.social-icons .bi-twitter:hover {
+  color: #4e83af;
+  transform: translateY(-5px);
+}
+
+/* LinkedIn */
+.social-icons .bi-linkedin:hover {
+  color: #0a66c2;
+  transform: translateY(-5px);
+}
+
+/* YouTube */
+.social-icons .bi-youtube:hover {
+  color: #ff0000;
+  transform: translateY(-5px);
 }

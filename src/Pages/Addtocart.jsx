@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Addtocart() {
   const [product, setProduct] = useState([]);
@@ -46,7 +47,7 @@ function Addtocart() {
       <div className="container my-5 text-center p-5  bg-light rounded shadow-sm">
         <h2 className="display-6">Your cart is empty! 🛒</h2>
         <p className="text-muted">Kuch mazedar items add karein.</p>
-        <a href="/" className="btn btn-primary mt-3 px-4">
+        <a href="/" className="btn btn-warning mt-3 px-4">
           Continue Shopping
         </a>
       </div>
@@ -137,9 +138,12 @@ function Addtocart() {
                   ${totalPrice.toFixed(2)}
                 </span>
               </div>
-              <button className="btn btn-primary w-100 py-2 fw-bold shadow-sm rounded-pill">
+              <Link
+                to="/payment"
+                className="btn btn-success w-100 py-2 fw-bold shadow-sm rounded-pill"
+              >
                 Proceed to Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </div>
