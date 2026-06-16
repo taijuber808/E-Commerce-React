@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, data } from "react-router-dom";
 import "./App.css";
-import NavScrollExample from "./component/Navbar";
-import Section from "./component/Section";
+import NavScrollExample from "./Component/Navbar";
+import Section from "./Component/Section";
 import Cart from "./Pages/View-detail";
 import { useState } from "react";
 import View from "./Pages/View-detail";
