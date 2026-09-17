@@ -1,42 +1,48 @@
-.custom-navbar{
-background-color:orange;
+.custom-navbar {
+  background-color: orange;
+
+}
+
+.dropdown-item:active {
+  background-color: orange !important;
 }
 
 .custom-navbar .nav-link,
 .custom-navbar .navbar-brand,
-.custom-navbar .dropdown-toggle{
-color: white;
-font-weight: 500;
+.custom-navbar .dropdown-toggle {
+  color: white;
+  font-weight: 500;
 
 }
 
 .custom-navbar .nav-link:hover,
-.custom-navbar .dropdown-toggle:hover{
-  color: #38bdf8 ;
+.custom-navbar .dropdown-toggle:hover {
+  color: #191b1c;
   transition: 0.3s;
 }
 
 
-.Search{
-  width: 1000px ;
+.Search {
+  width: 850px;
   border-radius: 30px;
   padding: 8px 10px;
   border: none;
 }
 
-.logo{
+.logo {
   width: 60px;
   border-radius: 10px;
 }
 
-.cart{
+.cart {
   margin-left: 15px;
   font-size: 18px;
 }
-.map{
+
+.map {
   margin-top: 70px;
   display: grid;
-  grid-template-columns: auto auto auto auto auto  ;
+  grid-template-columns: auto auto auto auto auto;
   justify-content: center;
   gap: 13px;
 }
@@ -50,14 +56,14 @@ font-weight: 500;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 500;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
 .editBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+
 }
 
 

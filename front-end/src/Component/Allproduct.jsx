@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Section({ search, category }) {
+function Allproduct({ search, category }) {
   const [data, setdata] = useState([]);
   const [current, setcurrent] = useState(1);
   const [sortOrder, setSortOrder] = useState("");
+
+  // Wishlist IDs
+  const [wishlistIds, setWishlistIds] = useState(() => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    return wishlist.map((item) => item.id);
+  });
 
   const userpages = 16;
 
@@ -28,6 +35,7 @@ function Section({ search, category }) {
     } else if (sortOrder === "High") {
       return b.price - a.price;
     }
+
     return 0;
   });
 
@@ -37,20 +45,39 @@ function Section({ search, category }) {
   const currentuser = sorteddata.slice(firstpage, lastpage);
   const totalpage = Math.ceil(filterData.length / userpages);
 
+  // Wishlist Add / Remove
   const addWishlist = (item) => {
     const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-    wishlist.push(item);
+    const alreadyAdded = wishlist.some((product) => product.id === item.id);
 
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    if (alreadyAdded) {
+      // REMOVE FROM WISHLIST
+      const updatedWishlist = wishlist.filter(
+        (product) => product.id !== item.id,
+      );
 
-    alert("Added to Wishlist ❤️");
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+
+      setWishlistIds((prev) => prev.filter((id) => id !== item.id));
+
+      alert("Removed from Wishlist 💔");
+    } else {
+      // ADD TO WISHLIST
+      wishlist.push(item);
+
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+      setWishlistIds((prev) => [...prev, item.id]);
+
+      alert("Added to Wishlist ❤️");
+    }
   };
 
   return (
     <>
-      <div className="container" style={{ marginTop: "90px" }}>
-        <div className="d-flex justify-content-end mb-1 ">
+      <div className="container" style={{ marginTop: "120px" }}>
+        <div className="d-flex justify-content-end mb-1">
           <select
             className="form-select shadow-sm"
             style={{ width: "220px" }}
@@ -64,17 +91,22 @@ function Section({ search, category }) {
         </div>
       </div>
 
-      <div className="d-flex align-items-center justify-content-center gap-3 ">
+      <div className="d-flex align-items-center justify-content-center gap-3">
         <button
-          className="btn btn-dark rounded-circle "
-          style={{ width: "70px", height: "50px", marginLeft: "30px" }}
+          className="btn btn-dark rounded-circle"
+          style={{
+            width: "70px",
+            height: "50px",
+            marginLeft: "30px",
+          }}
           onClick={() => setcurrent(current - 1)}
           disabled={current === 1}
         >
           ←
         </button>
+
         {/* Products */}
-        <div className="map d-flex flex-wrap justify-content-center gap-4 ">
+        <div className="map d-flex flex-wrap justify-content-center gap-4">
           {currentuser.map((item) => (
             <div
               key={item.id}
@@ -98,9 +130,10 @@ function Section({ search, category }) {
                   position: "relative",
                 }}
               >
+                {/* Wishlist Button */}
                 <button
                   onClick={() => addWishlist(item)}
-                  className="btn btn-light "
+                  className="btn btn-light"
                   style={{
                     position: "absolute",
                     top: "10px",
@@ -108,9 +141,16 @@ function Section({ search, category }) {
                     width: "40px",
                     height: "40px",
                     zIndex: 10,
+                    borderRadius: "50%",
                   }}
                 >
-                  <i className="bi bi-heart-fill text-danger"></i>
+                  <i
+                    className={`bi bi-heart-fill ${
+                      wishlistIds.includes(item.id)
+                        ? "text-danger"
+                        : "text-dark"
+                    }`}
+                  ></i>
                 </button>
 
                 <img
@@ -167,7 +207,7 @@ function Section({ search, category }) {
         </div>
 
         <button
-          className="btn btn-dark rounded-circle "
+          className="btn btn-dark rounded-circle"
           style={{
             width: "70px",
             height: "50px",
@@ -183,4 +223,4 @@ function Section({ search, category }) {
   );
 }
 
-export default Section;
+export default Allproduct;
